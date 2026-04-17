@@ -367,7 +367,10 @@ add_library(gazebo_random_velocity_plugin SHARED src/gazebo_random_velocity_plug
 add_library(gazebo_lidar_plugin SHARED src/gazebo_lidar_plugin.cpp)
 add_library(gazebo_opticalflow_mockup_plugin SHARED src/gazebo_opticalflow_mockup_plugin.cpp)
 add_library(gazebo_opticalflow_plugin SHARED src/gazebo_opticalflow_plugin.cpp)
-add_library(gazebo_aruco_plugin SHARED src/gazebo_aruco_plugin.cpp)
+# gazebo_aruco_plugin disabled: requires opencv2/aruco.hpp (opencv-contrib),
+# which is not present in the /usr/local OpenCV 4.8 build on this machine.
+# Re-enable if you install opencv_contrib and actually need ArUco landing.
+# add_library(gazebo_aruco_plugin SHARED src/gazebo_aruco_plugin.cpp)
 add_library(gazebo_sonar_plugin SHARED src/gazebo_sonar_plugin.cpp)
 add_library(gazebo_uuv_plugin SHARED src/gazebo_uuv_plugin.cpp)
 add_library(gazebo_vision_plugin SHARED src/gazebo_vision_plugin.cpp)
@@ -397,7 +400,7 @@ set(plugins
   gazebo_lidar_plugin
   gazebo_opticalflow_mockup_plugin
   gazebo_opticalflow_plugin
-  gazebo_aruco_plugin
+  # gazebo_aruco_plugin   # disabled above — needs opencv_contrib
   gazebo_sonar_plugin
   gazebo_uuv_plugin
   gazebo_vision_plugin
